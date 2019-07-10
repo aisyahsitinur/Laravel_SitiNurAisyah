@@ -37,9 +37,7 @@
         <div class="container-fluid">
 
           <!-- Page Content -->
-          <h1>Blank Page</h1>
-          <hr>
-          <p>This is a great starting point for new custom pages.</p>
+          @yield('content')
 
         </div>
         <!-- /.container-fluid -->
@@ -70,6 +68,7 @@
 
     <!-- Custom scripts for all pages-->
     <script src="{{url('theme-sbadmin/js/sb-admin.min.js')}}"></script>
+    <script type="text/javascript" src="{{url('theme-sbadmin/js/navbar-nav.js')}}"></script>
     @stack('js')
 
   </body>
