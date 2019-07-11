@@ -21,7 +21,26 @@ class UserController extends Controller
 
     public function save(Request $req)
     {
-    	return 'Fungsi Save';
+    	\Validator::make($req->all(),[
+    		'name'=>'required|between:3,100',
+    		'email'=>'required|unique:users,email',
+    		'password'=>'required|min:6',
+    		'repassword'=>'required|same:password',
+    		'akses'=>'required',
+    	])->validate();
+    	
+        $result = new User;
+        $result->name = $req->name;
+        $result->email = $req->email;
+        $result->password = bcrypt($req->password);
+        $result->akses = $req->akses;
+
+        if($result->save()){
+            return redirect()->route('admin.user')->with('result','success');
+        } else {
+            return back()->with('result','fail')->withInput();
+        }
+    	
     }
 
 }
