@@ -80,7 +80,7 @@ class UserController extends Controller
         if($result){
             return redirect()->route('admin.user')->with('result','update');
         } else {
-            return back()->with('result','fail');
+            return back()->with('result','fail'); 
         }
 
     }
